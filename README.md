@@ -12,13 +12,20 @@ Clone into the directory with the main Makefile:
 $ git clone https://github.com/aialferov/mk
 ```
 
-Include in the main Makefile:
+The setup procedure removes not needed files leaving the "mk" directory with
+makefiles and a Version file only:
+
+```
+$ make -C mk setup
+```
+
+Now the makefiles can be included into the main Makefile:
 
 ```
 include mk/<Makefile>
 ```
 
-See below the available Makefiles description.
+See below the available makefiles description.
 
 ### Erlanglib.mk
 
