@@ -5,8 +5,8 @@ PLUGIN_BEAMS = $(BASE_PATH)/plugins/*/ebin/*.beam
 
 PREFIX = usr/local
 
-BIN_DIR = bin
-BIN_PATH = $(DEST_DIR)/$(PREFIX)/$(BIN_DIR)
+BINDIR = bin
+BIN_PATH = $(DESTDIR)/$(PREFIX)/$(BINDIR)
 BIN_PATH_IN = $(BASE_PATH)/bin
 
 install:

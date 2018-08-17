@@ -60,14 +60,14 @@ Targets (in addition to Erlanglib.mk):
 The "install" and "uninstall" targets use the following path:
 
 ```
-$(DEST_DIR)/$(PREFIX)/$(BIN_DIR)/$(PROJECT)
+$(DESTDIR)/$(PREFIX)/$(BINDIR)/$(PROJECT)
 ```
 
 with the following default settings:
 
-* DEST_DIR — ""
+* DESTDIR — ""
 * PREFIX — "usr/local"
-* BIN_DIR — "bin"
+* BINDIR — "bin"
 * PROJECT — set by user
 
 The "erlang-" targets are based on the [R3erlang] plugin that Rebar3 downloads
