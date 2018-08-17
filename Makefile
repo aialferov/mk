@@ -1,4 +1,4 @@
-VERSION = 0.2.0
+VERSION = 0.2.1
 GIT_SHA = $(shell git rev-parse HEAD | cut -c1-8)
 
 usage:
