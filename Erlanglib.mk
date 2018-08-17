@@ -16,12 +16,16 @@ check:
 	$(REBAR) eunit
 
 clean-lib:
-	find $(LIB_PATH) -name \*.beam -o -name \*.app -o -name erlcinfo | xargs rm
-	find $(LIB_PATH) -type d -name .rebar3 -o -name ebin | xargs rmdir
+	find $(LIB_PATH) -type f \
+		-name \*.beam -o -name \*.app -o -name erlcinfo | xargs rm -f
+	find $(LIB_PATH) -type d \
+		-name .rebar3 -o -name ebin | xargs rmdir 2>/dev/null || true
 
 clean-plugin:
-	find $(PLUGIN_PATH) -name \*.beam -o -name \*.app -o -name erlcinfo | xargs rm
-	find $(PLUGIN_PATH) -type d -name .rebar3 -o -name ebin | xargs rmdir
+	find $(PLUGIN_PATH) -type f \
+		-name \*.beam -o -name \*.app -o -name erlcinfo | xargs rm -f
+	find $(PLUGIN_PATH) -type d \
+		-name .rebar3 -o -name ebin | xargs rmdir 2>/dev/null || true
 
 clean: clean-lib clean-plugin
 
