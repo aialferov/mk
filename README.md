@@ -121,6 +121,7 @@ window.
 [R3erlang]: https://github.com/aialferov/r3erlang
 [Makefiles]: https://www.gnu.org/software/make
 [Dockerfile]: Dockerfile
+[Erlanglib.mk]: https://github.com/aialferov/mk#erlanglibmk
 
 <!-- Badges -->
 [MIT badge]: https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square
