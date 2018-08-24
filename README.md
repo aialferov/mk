@@ -35,14 +35,14 @@ Defined variables:
 
  * `VERSION` — the library semantic version. Is read from the "src/*.app.src"
     file that is expected to be an [Erlang App] file with "vsn" key defined
- * `GIT_SHA` — first 8 characters of current Git SHA if available.
+ * `GIT_SHA` — first 8 characters of current Git SHA if available
  * `REBAR` — rebar3 executable path
  * `BASE_PATH` — common directory for compilation artefacts and downloaded
     dependencies
  * `LIB_PATH` — subdirectory of the "BASE_PATH" for the project compiled
     modules, dependencies download and dependencies compiled modules
  * `PLUGIN_PATH` — subdirectory of the "BASE_PATH" for rebar3 plugins and its
-    compiled modules
+    compiled modules.
 
 Targets:
 
@@ -122,7 +122,8 @@ Targets:
 
  * `docker-build` — build docker image
  * `docker-push` — push docker images into registry
- * `docker-release —` create "latest" tag and push into registry
+ * `docker-release —` create "latest" tag and push into registry.
+    Also perform "docker-push"
  * `docker-release-local` — create "latest" tag
  * `docker-run` — run image container
  * `docker-run-d` — run image container in background
