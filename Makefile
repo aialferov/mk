@@ -1,4 +1,4 @@
-VERSION = 0.6.1
+VERSION = 0.7.0
 GIT_SHA = $(shell git rev-parse HEAD | cut -c1-8)
 
 usage:
@@ -8,7 +8,7 @@ usage:
 	@echo "    usage        print this text"
 	@echo "    setup        remove all except *.mk files and add Version file"
 	@echo "    version      print full version (semantic one and git sha)"
-	@echo "    git-releae   push git tag named after the current version"
+	@echo "    git-release  push git tag named after the current version"
 
 setup:
 	find . -type f ! -name \*.mk -exec rm -f "{}" \;

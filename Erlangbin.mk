@@ -8,7 +8,7 @@ BIN_PATH_IN = $(BASE_PATH)/bin
 
 ERL_PATH = $(BASE_PATH)/erl
 
-clean: clean-lib clean-plugin
+clean::
 	rm -f $(BIN_PATH_IN)/$(PROJECT)
 
 install:

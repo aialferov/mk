@@ -15,19 +15,15 @@ compile:
 check:
 	$(REBAR) eunit
 
-clean-lib:
+clean::
 	find $(LIB_PATH) -type f \
 		-name \*.beam -o -name \*.app -o -name erlcinfo | xargs rm -f
 	find $(LIB_PATH) -type d \
 		-name .rebar3 -o -name ebin | xargs rmdir 2>/dev/null || true
-
-clean-plugin:
 	find $(PLUGIN_PATH) -type f \
 		-name \*.beam -o -name \*.app -o -name erlcinfo | xargs rm -f
 	find $(PLUGIN_PATH) -type d \
 		-name .rebar3 -o -name ebin | xargs rmdir 2>/dev/null || true
-
-clean: clean-lib clean-plugin
 
 distclean:
 	rm -rf _build
