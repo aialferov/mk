@@ -3,24 +3,24 @@ include mk/Erlanglib.mk
 PREFIX = usr/local
 
 BINDIR = bin
-BIN_PATH = $(DESTDIR)/$(PREFIX)/$(BINDIR)
-BIN_PATH_IN = $(BASE_PATH)/bin
+BINPATH = $(DESTDIR)/$(PREFIX)/$(BINDIR)
 
+BIN_PATH = $(BASE_PATH)/bin
 ERL_PATH = $(BASE_PATH)/erl
 
 clean::
-	rm -f $(BIN_PATH_IN)/$(PROJECT)
+	rm -f $(BIN_PATH)/$(PROJECT)
 
 install:
-	mkdir -p $(BIN_PATH)
-	install -p $(BIN_PATH_IN)/$(PROJECT) $(BIN_PATH)
+	mkdir -p $(BINPATH)
+	install -p $(BIN_PATH)/$(PROJECT) $(BINPATH)
 
 uninstall:
-	rm -f $(BIN_PATH)/$(PROJECT)
-	rmdir -p $(BIN_PATH) 2>/dev/null || true
+	rm -f $(BINPATH)/$(PROJECT)
+	rmdir -p $(BINPATH) 2>/dev/null || true
 
 run:
-	$(BIN_PATH_IN)/$(PROJECT) run
+	$(BIN_PATH)/$(PROJECT) run
 
 join:
 	erl \
