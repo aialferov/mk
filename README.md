@@ -1,6 +1,7 @@
 # Mk
 
-[![License: MIT][MIT badge]][MIT]
+[![License: MIT][MIT Badge]][MIT]
+[![GitHub Release Badge]][GitHub Releases]
 
 Set of [Makefiles] to simplify software building and packaging process.
 
@@ -140,6 +141,7 @@ Targets:
 
 <!-- Links -->
 [MIT]: https://opensource.org/licenses/MIT
+[GitHub Releases]: https://github.com/aialferov/mk/releases
 [EUnit]: http://erlang.org/doc/apps/eunit/chapter.html
 [Docker]: https://docs.docker.com
 [Erlang]: http://erlang.org
@@ -151,4 +153,5 @@ Targets:
 [Erlanglib.mk]: https://github.com/aialferov/mk#erlanglibmk
 
 <!-- Badges -->
-[MIT badge]: https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square
+[MIT Badge]: https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square
+[GitHub Release Badge]: https://img.shields.io/github/release/aialferov/mk/all.svg?style=flat-square
