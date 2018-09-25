@@ -35,6 +35,10 @@ shell:
 	$(REBAR) shell
 	$(REBAR) unlock
 
+deps:
+	$(REBAR) get-deps
+	$(REBAR) unlock
+
 upgrade:
 	$(REBAR) upgrade
 	$(REBAR) unlock
@@ -50,13 +54,14 @@ usage:
 	$(usage)
 
 define usage-erlanglib-targets
-	@printf '$(shell printf "    %%-$(USAGE_PADDING)s %%s\\\n%.0s" {1..8})' \
+	@printf '$(shell printf "    %%-$(USAGE_PADDING)s %%s\\\n%.0s" {1..9})' \
 	compile \
 		"Compile including downloading and compiling dependencies (default)" \
 	check "Run EUnit based unit tests" \
 	clean "Remove all the compilation artefacts" \
 	distclean "Remove the \"_build\" directory recursively" \
 	shell "Run Erlang shell with all the modules compiled and loaded" \
+	deps "Download dependencies" \
 	upgrade "Upgrade dependencies" \
 	git-release "Create and push a git tag named after current version" \
 	version "Print current version and git SHA"

@@ -60,6 +60,7 @@ Targets:
     build output directory
  * `shell` — gets into an Erlang shell with all the library and dependencies
     modules loaded
+ * `deps` — downloads the library dependencies
  * `upgrade` — upgrades the library dependencies
  * `git-release` — creates and pushes a tag named after the current version
     (uses "VERSION" variable)
