@@ -8,6 +8,8 @@ BINPATH = $(DESTDIR)/$(PREFIX)/$(BINDIR)
 BIN_PATH = $(BASE_PATH)/bin
 ERL_PATH = $(BASE_PATH)/erl
 
+USAGE_PADDING = 16
+
 clean::
 	rm -f $(BIN_PATH)/$(PROJECT)
 
@@ -40,3 +42,33 @@ erlang-install:
 	$(MAKE) -C $(ERL_PATH) install DESTDIR=$(DESTDIR) PREFIX=$(PREFIX)
 
 package-ready: clean erlang-clean erlang install erlang-install
+
+define usage-erlangbin-targets
+	$(usage-erlanglib-targets)
+	@printf '$(shell printf "    %%-$(USAGE_PADDING)s %%s\\\n%.0s" {1..8})' \
+	install "Install \"$(BIN_PATH)/$(PROJECT)\" to \"$(BINPATH)\"" \
+	uninstall "Remove \"$(BINPATH)/$(PROJECT)\"" \
+	run "Run \"$(BIN_PATH)/$(PROJECT)\"" \
+	join "Attach to the running executable Erlang machine with remote shell" \
+	erlang "Create an Erlang release with runtime and libraries needed to run" \
+	erlang-clean "Remove created Erlang release" \
+	erlang-install \
+		"Install created Erlang release to \"$(DESTDIR)/$(PREFIX)\"" \
+	package-ready "Prepare for packaging"
+endef
+
+define usage-erlangbin-variables
+	@printf '$(shell printf "    %%-$(USAGE_PADDING)s %%s\\\n%.0s" {1..2})' \
+	DESTDIR "Compiled binary or Erlang release installation chroot (current: \"$(DESTDIR)\")" \
+	PREFIX "Compiled binary or Erlang release installation prefix (current: \"$(PREFIX)\")"
+endef
+
+define usage
+	@echo "Usage: make <Target> [Variables]"
+	@echo
+	@echo "Targets"
+	$(usage-erlangbin-targets)
+	@echo
+	@echo "Variables"
+	$(usage-erlangbin-variables)
+endef
