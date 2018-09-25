@@ -26,6 +26,12 @@ Now the makefiles can be included into the main Makefile:
 include mk/<Makefile>
 ```
 
+Where "Makefile" is one of the following:
+
+ * [Erlanglib.mk](erlanglibmk)
+ * [Erlangbin.mk](erlangbinmk)
+ * [Docker.mk](docker)
+
 ### Erlanglib.mk
 
 Provides targets for building an [Erlang] library. Based on [Rebar3] and expects
@@ -131,7 +137,7 @@ Targets:
  * `docker-stop` — stop running container
  * `docker-join` — join a running in a container Erlang application with remote
     shell
- * `docker-shell —` exec shell in a running container
+ * `docker-shell` — exec shell in a running container
  * `docker-attach` — attach into a running container (no detach target,
     to detach the used windows should be closed)
  * `docker-logs` — print logs of a running container
