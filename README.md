@@ -28,9 +28,9 @@ include mk/<Makefile>
 
 Where "Makefile" is one of the following:
 
- * [Erlanglib.mk](erlanglibmk)
- * [Erlangbin.mk](erlangbinmk)
- * [Docker.mk](docker)
+ * [Erlanglib.mk](#erlanglibmk)
+ * [Erlangbin.mk](#erlangbinmk)
+ * [Docker.mk](#dockermk)
 
 ### Erlanglib.mk
 
