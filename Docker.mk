@@ -56,6 +56,7 @@ docker-clean:
 docker-distclean: docker-clean
 	docker rmi $(IMAGE_LATEST) $(IMAGE) 2>/dev/null || true
 
+docker-help: docker-usage
 docker-usage:
 	@echo "Usage: make <Target> [Variables]"
 	@echo

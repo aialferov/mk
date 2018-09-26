@@ -59,7 +59,7 @@ endef
 
 define usage-erlangbin-variables
 	@printf '$(shell printf "    %%-$(USAGE_PADDING)s %%s\\\n%.0s" {1..3})' \
-	"Compiled binary run arguments (current: \"$(RUN_ARGS)\")" \
+	RUN_ARGS "Compiled binary run arguments (current: \"$(RUN_ARGS)\")" \
 	DESTDIR "Compiled binary or Erlang release installation chroot (current: \"$(DESTDIR)\")" \
 	PREFIX "Compiled binary or Erlang release installation prefix (current: \"$(PREFIX)\")"
 endef

@@ -50,6 +50,7 @@ git-release:
 version:
 	@echo "Version $(VERSION) (git-$(GIT_SHA))"
 
+help: usage
 usage:
 	$(usage)
 
