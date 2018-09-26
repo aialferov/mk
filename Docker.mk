@@ -3,17 +3,13 @@ REGISTRY = docker.io
 IMAGE = $(REGISTRY)/$(USER)/$(PROJECT):$(VERSION)
 IMAGE_LATEST = $(REGISTRY)/$(USER)/$(PROJECT):latest
 
-ifndef DOCKER_RUN_ARGS
-	DOCKER_RUN_ARGS = -it --rm --name $(PROJECT) $(DOCKER_RUN_ARGS_EXTRA)
-endif
-ifndef DOCKER_BUILD_ARGS
-	DOCKER_BUILD_ARGS = $(DOCKER_BUILD_ARGS_EXTRA) . -t $(IMAGE)
-endif
+DOCKER_RUN_ARGS = -it --rm --name $(PROJECT)
+DOCKER_BUILD_ARGS = . -t $(IMAGE)
 
 DOCKER_USAGE_PADDING = 24
 
 docker-build:
-	docker build $(DOCKER_BUILD_ARGS)
+	docker build $(DOCKER_BUILD_ARGS_EXTRA) $(DOCKER_BUILD_ARGS)
 
 docker-push:
 	docker push $(IMAGE)
@@ -25,10 +21,10 @@ docker-local-release:
 	docker tag $(IMAGE) $(IMAGE_LATEST)
 
 docker-run:
-	docker run $(DOCKER_RUN_ARGS) $(IMAGE) run
+	docker run $(DOCKER_RUN_ARGS) $(DOCKER_RUN_ARGS_EXTRA) $(IMAGE) run
 
 docker-run-d:
-	docker run -d $(DOCKER_RUN_ARGS) $(IMAGE) run
+	docker run -d $(DOCKER_RUN_ARGS) $(DOCKER_RUN_ARGS_EXTRA) $(IMAGE) run
 
 docker-stop:
 	docker stop $(DOCKER_STOP_ARGS) $(PROJECT)
@@ -76,7 +72,7 @@ define usage-docker-targets
 	docker-push "Push image \"$(IMAGE)\"" \
 	docker-local-release "Tag \"$(IMAGE)\" as \"$(IMAGE_LATEST)\"" \
 	docker-release "Same as \"docker-local-release\" and push both images" \
-	docker-run "Run container \"$(PROJECT)\" of \"$(IMAGE)\""  \
+	docker-run "Run \"$(IMAGE)\" as container \"$(PROJECT)\""  \
 	docker-run-d "Same as \"docker-run\" but run in background" \
 	docker-stop "Stop and remove running container \"$(PROJECT)\"" \
 	docker-join \
@@ -85,7 +81,7 @@ define usage-docker-targets
 	docker-attach "Attach to running container \"$(PROJECT)\"" \
 	docker-logs "Print running \"$(PROJECT)\" container logs" \
 	docker-logs-f "Same as \"docker-logs\" but follow log output" \
-	docker-clean "Prunes everything with label \"project=$(PROJECT)\"" \
+	docker-clean "Prune everything with label \"project=$(PROJECT)\"" \
 	docker-distclean "Remove images \"$(IMAGE)\" and \"$(IMAGE_LATEST)\""
 endef
 
@@ -104,5 +100,5 @@ define usage-docker-variables
 	DOCKER_BUILD_ARGS \
 		"Image building arguments (current: \"$(DOCKER_BUILD_ARGS)\")" \
 	DOCKER_BUILD_ARGS_EXTRA \
-		"Appends to DOCKER_BUILD_ARGS (current: \"$(DOCKER_BUILD_ARGS_EXTRA)\")"
+		"Prepends to DOCKER_BUILD_ARGS (current: \"$(DOCKER_BUILD_ARGS_EXTRA)\")"
 endef
