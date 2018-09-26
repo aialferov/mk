@@ -22,7 +22,7 @@ uninstall:
 	rmdir -p $(BINPATH) 2>/dev/null || true
 
 run:
-	$(BIN_PATH)/$(PROJECT) run
+	$(BIN_PATH)/$(PROJECT) $(RUN_ARGS)
 
 join:
 	erl \
@@ -58,7 +58,8 @@ define usage-erlangbin-targets
 endef
 
 define usage-erlangbin-variables
-	@printf '$(shell printf "    %%-$(USAGE_PADDING)s %%s\\\n%.0s" {1..2})' \
+	@printf '$(shell printf "    %%-$(USAGE_PADDING)s %%s\\\n%.0s" {1..3})' \
+	"Compiled binary run arguments (current: \"$(RUN_ARGS)\")" \
 	DESTDIR "Compiled binary or Erlang release installation chroot (current: \"$(DESTDIR)\")" \
 	PREFIX "Compiled binary or Erlang release installation prefix (current: \"$(PREFIX)\")"
 endef

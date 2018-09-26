@@ -21,10 +21,10 @@ docker-local-release:
 	docker tag $(IMAGE) $(IMAGE_LATEST)
 
 docker-run:
-	docker run $(DOCKER_RUN_ARGS) $(DOCKER_RUN_ARGS_EXTRA) $(IMAGE) run
+	docker run $(DOCKER_RUN_ARGS) $(DOCKER_RUN_ARGS_EXTRA) $(IMAGE) $(RUN_ARGS)
 
 docker-run-d:
-	docker run -d $(DOCKER_RUN_ARGS) $(DOCKER_RUN_ARGS_EXTRA) $(IMAGE) run
+	docker run -d $(DOCKER_RUN_ARGS) $(DOCKER_RUN_ARGS_EXTRA) $(IMAGE) $(RUN_ARGS)
 
 docker-stop:
 	docker stop $(DOCKER_STOP_ARGS) $(PROJECT)
@@ -87,12 +87,13 @@ endef
 
 define usage-docker-variables
 	@printf \
-		'$(shell printf "    %%-$(DOCKER_USAGE_PADDING)s %%s\\\n%.0s" {1..8})' \
+		'$(shell printf "    %%-$(DOCKER_USAGE_PADDING)s %%s\\\n%.0s" {1..9})' \
 	REGISTRY "Docker registry (current: \"$(REGISTRY)\")" \
 	USER "Used as Docker ID (current: \"$(USER)\")" \
 	PROJECT \
 		"Used as image and running container name (current: \"$(PROJECT)\")" \
 	VERSION "Version (current: \"$(VERSION)\")" \
+	RUN_ARGS "Container entrypoint arguments (current: \"$(RUN_ARGS)\")" \
 	DOCKER_RUN_ARGS \
 		"Container running arguments (current: \"$(DOCKER_RUN_ARGS)\")" \
 	DOCKER_RUN_ARGS_EXTRA \
