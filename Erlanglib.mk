@@ -1,5 +1,5 @@
-PROJECT = $(shell grep {application, src/*.app.src | cut -d" " -f2 | tr -d "',")
-VERSION = $(shell grep {vsn, src/$(PROJECT).app.src | cut -d\" -f2)
+PROJECT = $(shell grep {application, src/*.script | cut -d" " -f2 | tr -d "',")
+VERSION = $(shell grep {vsn, src/$(PROJECT).app.src.script | cut -d\" -f2)
 GIT_SHA = $(shell git rev-parse HEAD | cut -c1-8)
 
 REBAR = $(shell which ./rebar3 || which rebar3)
