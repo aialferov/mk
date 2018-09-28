@@ -40,8 +40,9 @@ Makefile.
 
 Defined variables:
 
- * `VERSION` — the library semantic version. Is read from the "src/*.app.src"
-    file that is expected to be an [Erlang App] file with "vsn" key defined
+ * `VERSION` — the library semantic version. Is read from the
+    "src/*.app.src.script" file that is expected to be a [Rebar3 Dynamic
+    Configuration] file for an [Erlang App] file with "vsn" key defined
  * `GIT_SHA` — first 8 characters of current Git SHA if available
  * `REBAR` — rebar3 executable path
  * `BASE_PATH` — common directory for compilation artefacts and downloaded
@@ -158,6 +159,7 @@ Targets:
 [Erlang App]: http://erlang.org/doc/man/app.html
 [Dockerfile]: Dockerfile
 [Erlanglib.mk]: https://github.com/aialferov/mk#erlanglibmk
+[Rebar3 Dynamic Configuration]: https://www.rebar3.org/docs/dynamic-configuration
 
 <!-- Badges -->
 [MIT Badge]: https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square
