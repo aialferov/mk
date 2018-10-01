@@ -28,9 +28,10 @@ include mk/<Makefile>
 
 Where "Makefile" is one of the following:
 
- * [Erlanglib.mk](#erlanglibmk)
- * [Erlangbin.mk](#erlangbinmk)
- * [Docker.mk](#dockermk)
+ * [Erlanglib.mk]
+ * [Erlangbin.mk]
+ * [Docker.mk]
+ * [Kubernetes.mk]
 
 ### Erlanglib.mk
 
@@ -147,6 +148,31 @@ Targets:
  * `docker-clean` — remove image of the current version
  * `docker-distclean` — remove both "latest" and the current version images.
 
+
+### Kubernetes.mk
+
+Provides targets to simplify [Kubernetes] deployments.
+
+Required variables:
+
+ * `PROJECT` — used as deployment name
+ * `IMAGE` — used as image to create or upgrade a deployment.
+
+Defined variables:
+
+ * `POD_NAME` — retrieved from a created "PROJECT" deployment using "kubectl".
+
+Targets:
+
+ * `kube-run` — create deployment "PROJECT" using image "IMAGE"
+ * `kube-join` — remsh to Erlang application in running pod "POD_NAME"
+ * `kube-shell` — exec shell in running pod "POD_NAME"
+ * `kube-attach` — attach to running pod "POD_NAME"
+ * `kube-upgrade` — upgrade deployment "PROJECT" to image "IMAGE"
+ * `kube-logs` — print running "POD_NAME" pod logs
+ * `kube-logs-f` — same as "kube-logs" but follow log output
+ * `kube-delete` — delete deployment "PROJECT".
+
 <!-- Links -->
 [MIT]: https://opensource.org/licenses/MIT
 [GitHub Releases]: https://github.com/aialferov/mk/releases
@@ -158,8 +184,13 @@ Targets:
 [Makefiles]: https://www.gnu.org/software/make
 [Erlang App]: http://erlang.org/doc/man/app.html
 [Dockerfile]: Dockerfile
-[Erlanglib.mk]: https://github.com/aialferov/mk#erlanglibmk
+[Kubernetes]: https://kubernetes.io
 [Rebar3 Dynamic Configuration]: https://www.rebar3.org/docs/dynamic-configuration
+
+[Erlanglib.mk]: #erlanglibmk
+[Erlangbin.mk]: #erlangbinmk
+[Docker.mk]: #dockermk
+[Kubernetes.mk]: #kubernetsmk
 
 <!-- Badges -->
 [MIT Badge]: https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square
